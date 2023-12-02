@@ -6,7 +6,8 @@ import CharacterDetails from './characterDetails.js';
 document.addEventListener('DOMContentLoaded', () => {
     loadHeaderFooter();
     const marvelApi = new MarvelAPI();
-    const characterId = getParam('character');
+    const params = new URLSearchParams(window.location.search);
+    const characterId = params.get('character');
     const character = new CharacterDetails(characterId, marvelApi);
     character.init();
   });
