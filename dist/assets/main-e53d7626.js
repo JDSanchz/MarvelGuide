@@ -1,0 +1,1 @@
+import{l as e,C as n,M as s}from"./utils-73e690f4.js";const r=new s;document.addEventListener("DOMContentLoaded",()=>{e()});window.addEventListener("hashchange",()=>{const a=window.location.hash,t=a.split("/")[1];a.startsWith("#character/")&&new n(t,r).init()});window.dispatchEvent(new Event("hashchange"));
