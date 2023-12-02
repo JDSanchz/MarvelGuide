@@ -1,16 +1,24 @@
 // Import the API function
-import { fetchMarvelData } from '../api/marvelAPI.js';
+import MarvelAPI from '../api/marvelAPI.js';
+import CharacterDetails from './characterDetails.js';
+import {loadHeaderFooter } from './utils.mjs'; 
 
-// Function to test the API call
-const testMarvelApi = async () => {
-  try {
-    // Replace 'characters' with the desired endpoint
-    const data = await fetchMarvelData('characters');
-    console.log('API Response:', data);
-  } catch (error) {
-    console.error('API Call Failed:', error);
+const marvelApi = new MarvelAPI();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadHeaderFooter();
+});
+
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash;
+  const characterId = hash.split('/')[1];
+
+  if (hash.startsWith('#character/')) {
+    const characterDetails = new CharacterDetails(characterId, marvelApi);
+    characterDetails.init();
   }
-};
+});
 
-// Call the test function
-testMarvelApi();
+// Initialize routing on page load
+window.dispatchEvent(new Event('hashchange'));

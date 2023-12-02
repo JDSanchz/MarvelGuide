@@ -1,20 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.logo {
-  background-color: #e63946; 
-  color: white; /* White text color */
-  font-size: 26px;
-  font-family: 'Bebas Neue', sans-serif; /* Bebas font */
-  text-decoration: none; /* No text decoration */
-  padding: 15px; /* Add padding to make the background visible */
-  display: inline-block; /* Allows padding to affect inline elements like <a> */
-}
 
-.logo a {
-  text-decoration: none; /* Ensures that the link has no underline */
-  color: inherit; /* The color will be inherited from the #logo styles */
-  display: block; /* Makes the link fill the area of #logo for better clickability */
-}
   :root {
       --dark-blue: #2a3d66;
       --light-red: #e63946;
@@ -47,6 +33,21 @@
       align-items: center;
       padding: 0 1rem;
     }
+    .logo {
+      background-color: #e63946; 
+      color: white; /* White text color */
+      font-size: 26px;
+      font-family: 'Bebas Neue', sans-serif; /* Bebas font */
+      text-decoration: none; /* No text decoration */
+      padding: 15px; /* Add padding to make the background visible */
+      display: inline-block; /* Allows padding to affect inline elements like <a> */
+    }
+    
+    .logo a {
+      text-decoration: none; /* Ensures that the link has no underline */
+      color: inherit; /* The color will be inherited from the #logo styles */
+      display: block; /* Makes the link fill the area of #logo for better clickability */
+    }
   
     .search-container {
       position: relative;
@@ -61,17 +62,34 @@
       width: calc(100% - 5rem); /* Adjust width to leave space for button */
     }
   
-    .search-container button {
+    .results-container {
       position: absolute;
-      right: 0;
-      top: 0;
-      border: none;
-      border-radius: 20px;
-      padding: 0.5rem 1rem;
-      background-color: var(--light-red);
-      color: var(--light-gray);
+      top: 100%; /* Positions right below the input field */
+      width: 100%; /* Match the width with the input field */
+      z-index: 10; /* Ensures it appears above other content */
+      display: none; /* Initially hidden */
+      background-color: var(--dark-gray) ;
+  }
+  .results-container div {
+      padding: 10px;
       cursor: pointer;
-    }
+  }
+  
+  .results-container div:hover {
+      color: #ff707c;
+      background-color:#273147;
+  }
+
+  .result-item {
+    padding: 5px 10px; /* Add some padding */
+    border-bottom: 1px solid #ddd; /* Add a border to separate items */
+}
+
+.result-link {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Use the inherited text color */
+    display: block; /* Make the link fill the container */
+}
   
     main {
       padding: 1rem;
@@ -98,6 +116,40 @@
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
+
+    .info {
+      display: flex;
+      padding: 10px;
+      align-items: center; /* Align items vertically */
+      gap: 20px; /* Space between the image and text */
+  }
+  
+  .info img {
+      width: 400px; /* Adjust the width as needed */
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 10px; /* Optional: Adds rounded corners to the image */
+  }
+  
+  .info p {
+      flex-grow: 1; /* Allow the text to take up the remaining space */
+      padding: 10px; /* Optional: Adds padding around the text */
+      font-size: 20px;
+  }
+  .comics-container{
+    padding: 25px;
+  }
+  .comic-item a {
+    text-decoration: none;
+    color: var(--dark-gray);
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Needed for transform to work */
+  }
+  
+  .comic-item a:hover {
+    color: var(--light-red);
+    transform: scale(1.05); /* Scale up the element */
+  }
+
   
     footer {
       background-color: var(--dark-gray);
@@ -109,3 +161,73 @@
       width: 100%;
       height: 80px;
     }
+
+
+  /* Mobile view adjustments */
+@media screen and (max-width: 600px) {
+  .logo{
+    font-size: 20px;
+  }
+  header{
+    padding: 10px 0px 20px 0px;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.3rem;
+  }
+  .info {
+    width: 100%;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: start; /* Align items to the start */
+  }
+
+  .info img {
+    width: 100%; /* Full width of the container */
+    height: auto;
+  }
+
+  .info p {
+    font-size: 16px; /* Smaller font size */
+  }
+
+  .comics-container{
+    padding: 5px;
+  }
+
+  .comic-item a {
+    font-size: 14px; /* Smaller font size for links */
+  }
+
+  nav {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .logo-container {
+    width: 100%; /* Full width */
+    text-align: center; /* Center the logo */
+    padding: 0.5rem 0; /* Adjust padding */
+  }
+
+  .search-container {
+    width: 90%; /* Full width for the search bar */
+    margin: 10px auto 0px auto; /* Add some space between logo and search bar */
+  }
+
+  .search-container input[type="search"] {
+    width: 100%; /* Adjust width to account for button */
+  }
+
+  .search-container button {
+    position: static; /* Make the button part of the flow in mobile view */
+    padding: 0.5rem; /* Adjust padding for touch-friendly interaction */
+  }
+
+  .results-container {
+    width: 100%; /* Ensure full width for search results */
+  }
+
+}
+

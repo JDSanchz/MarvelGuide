@@ -1,21 +1,35 @@
-// Access environment variables
-const API_KEY = import.meta.env.VITE_MARVEL_API_KEY;
-const BASE_URL = import.meta.env.VITE_MARVEL_BASE_URL;
-
-// Function to fetch data from the Marvel API
-export const fetchMarvelData = async (endpoint, params = {}) => {
-  // Construct the URL with parameters
-  const url = new URL(`${BASE_URL}${endpoint}`);
-  url.search = new URLSearchParams({ apikey: API_KEY, ...params });
-
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return await response.json();
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    throw error;
+class MarvelAPI {
+  constructor() {
+    this.API_KEY = import.meta.env.VITE_MARVEL_API_KEY;
+    this.BASE_URL = import.meta.env.VITE_MARVEL_BASE_URL;
   }
-};
+
+  async fetchMarvelData(endpoint, params = {}) {
+    const url = new URL(`${this.BASE_URL}${endpoint}`);
+    url.search = new URLSearchParams({ apikey: this.API_KEY, ...params });
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }
+
+  async fetchComicsByCharacterId(characterId) {
+    const endpoint = `characters/${characterId}/comics`;
+    const data = await this.fetchMarvelData(endpoint);
+    return data.data.results; // Adjust based on actual response structure
+}
+
+  async findCharacterById(id) {
+    const data = await this.fetchMarvelData(`characters/${id}`);
+    return data.data.results[0];
+  }
+}
+
+export default MarvelAPI;
