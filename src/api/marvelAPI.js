@@ -1,6 +1,7 @@
 // Access environment variables
-const API_KEY = import.meta.env.VITE_MARVEL_API_KEY;
-const BASE_URL = import.meta.env.VITE_MARVEL_BASE_URL;
+const API_KEY = 'f9bde80f6b1ced07ded8d00810b72e7e'
+const BASE_URL = 'https://gateway.marvel.com/v1/public/'
+
 
 // Function to fetch data from the Marvel API
 export const fetchMarvelData = async (endpoint, params = {}) => {
