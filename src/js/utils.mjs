@@ -1,4 +1,5 @@
 import { initializeSearch } from './searchModule.js';
+import { setupDarkModeToggle } from './darkModeManager.js';
 
 export function getParam(param) {
     const queryString = window.location.search;
@@ -46,5 +47,6 @@ export async function loadHtml(url) {
     await renderHtml('/partials/header.html', 'main-header');
     await renderHtml('/partials/footer.html', 'main-footer');
     initializeSearch();
+    setupDarkModeToggle();
   }
   

@@ -5,7 +5,7 @@ import {loadHeaderFooter } from './utils.mjs';
 import { initiateCharacterDisplay } from './characterDisplay.js';
 import { displayTrendingCharacters } from './trendingDisplay.js';
 import { displayComics } from './comicChoicesDis.js';
-import { setupDarkModeToggle } from './darkModeManager.js';
+
 
 const marvelApi = new MarvelAPI();
 
@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initiateCharacterDisplay();
   displayTrendingCharacters();
   displayComics();
-  setupDarkModeToggle();
 });
 
 
