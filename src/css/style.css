@@ -150,6 +150,27 @@
     transform: scale(1.05); /* Scale up the element */
   }
 
+  .comic-desc {
+    margin-top: 0; /* Removes default top margin from the paragraph */
+    margin-bottom: 20px; /* Adds some space below the description */
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.comic-wrapper {
+    display: flex;
+    justify-content: center; /* Centers the child horizontally */
+    align-items: center; /* Centers the child vertically */
+    padding: 20px;
+}
+
+.comic-cover {
+    max-width: 100%; /* Ensures the image is not larger than its container */
+    height: auto; /* Maintains the aspect ratio of the image */
+    border-radius: 5%;
+}
+
+
     footer {
       background-color: var(--dark-gray);
       color: var(--light-gray);
@@ -214,6 +235,13 @@
     font-size: 14px; /* Smaller font size for links */
   }
 
+  .comic-desc {
+    margin-top: 0; /* Removes default top margin from the paragraph */
+    margin-bottom: 20px; /* Adds some space below the description */
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 15px;
+}
   nav {
     flex-direction: column; /* Stack items vertically */
     align-items: flex-start; /* Align items to the start */

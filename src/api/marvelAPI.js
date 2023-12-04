@@ -30,6 +30,11 @@ class MarvelAPI {
     const data = await this.fetchMarvelData(`characters/${id}`);
     return data.data.results[0];
   }
+
+  async findComicById(id) {
+    const data = await this.fetchMarvelData(`comics/${id}`);
+    return data.data.results[0]; // Assuming the API returns an array
+}
 }
 
 export default MarvelAPI;

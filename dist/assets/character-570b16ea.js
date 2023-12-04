@@ -1,0 +1,1 @@
+import{l as e,M as t}from"./utils-4790b891.js";import{C as c}from"./characterDetails-321208a7.js";document.addEventListener("DOMContentLoaded",()=>{e();const a=new t,r=new URLSearchParams(window.location.search).get("character");new c(r,a).init()});

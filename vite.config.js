@@ -10,7 +10,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'src/index.html'),
         character: resolve(__dirname, 'src/character_pages/character.html'),
-
+        comic: resolve(__dirname, 'src/comic_details/comic.html')
       },
     },
   },
