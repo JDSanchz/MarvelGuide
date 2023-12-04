@@ -15,6 +15,11 @@
       box-sizing: border-box;
     }
   
+    .dark-mode {
+      background-color: #333;
+      color: white;
+      /* Add other styling for dark mode */
+    }
     body {
       font-family: 'Arial', sans-serif;
       background-color: var(--body-bg);
@@ -93,14 +98,132 @@
   
     main {
       padding: 1rem;
+      min-height: 600px;
     }
+
+    .main-wrapper {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr); /* 12-column grid */
+      grid-template-rows: 350px auto;
+      gap: 1rem; 
+  }
+
+
+.section-comics {
+    grid-column: span 12; 
+}
+
+.section-characters {
+    grid-column: span 6;
+  
+}
+
+.section-trending-heroes {
+  grid-column: span 6; 
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates three columns */
+  gap: 5px; /* Space between the cards */
+  padding: 10px; /* Padding around the grid */
+  margin: 0 auto; /* Center the grid horizontally */
+  width: 100%;
+}
+
+.character-grid-trend {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr); /* Creates three columns */
+  gap: 5px; /* Space between the cards */
+  padding: 10px; /* Padding around the grid */
+  margin: 0 auto; /* Center the grid horizontally */
+}
+
+.character-card {
+  width: 150px;
+  height: 220px;
+  margin: 0 auto;
+  background-color: #2a3d66;
+  cursor: pointer; /* Makes it clear the card is clickable */
+  border: 1px solid #ddd; /* Adds a light border around the card */
+  border-radius: 8px; /* Rounds the corners of the card */
+  overflow: hidden; /* Ensures nothing overflows the border-radius */
+  text-align: center; /* Centers the text */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Adds a subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.character-card:hover {
+  transform: translateY(-5px); /* Slightly raise the card on hover */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Increase shadow on hover */
+  background-color: #344978;
+}
+
+.character-card-img {
+  width: 150px; /* Width of the image container */
+  height: 150px; /* Height of the image container */
+  overflow: hidden; /* Prevents the image from overflowing */
+  display: flex; /* Uses flexbox for centering */
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  margin: auto; /* Center the div in the card */
+}
+
+.character-card-img img {
+  max-width: 100%; /* Ensures image does not exceed container's width */
+  height: auto; /* Maintains aspect ratio */
+  object-fit:fill; /* Ensures image covers the div area */
+  border-radius: 8px; /* Optional: rounds the corners of the image */
+}
+
+.character-card h3 {
+  margin: 10px 0; /* Spacing above and below the title */
+  padding: 5px 7px; /* Padding on the sides */
+  font-size: 1rem; /* Font size of the title */
+  color: white; /* Color of the title text */
+}
+
+.comic-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
+
+.comic-card {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.comic-card:hover {
+  transform: scale(1.05);
+}
+
+.comic-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
   
     section {
       margin-bottom: 2rem;
       min-height: 200px;
       background-color: var(--light-gray);
       border-radius: 5px;
+      padding: 10px;
     }
+
   
     section h2 {
       background-color: var(--light-red);
@@ -197,9 +320,71 @@
       text-align: left;
   }
 
+  /* The switch container */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #e63946;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #e63946;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
 
   /* Mobile view adjustments */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1004px) {
   .logo{
     font-size: 20px;
   }
@@ -212,6 +397,7 @@
     align-items: center;
     padding: 0 0.3rem;
   }
+
   .info {
     width: 100%;
     flex-direction: column; /* Stack image and text vertically */
@@ -274,12 +460,55 @@
     flex-direction: column;
 }
 
+.main-wrapper {
+  grid-template-columns: repeat(2, 1fr); /* Single column layout */
+  grid-template-rows: auto; /* Auto height for each row */
+}
+
+
+.section-characters,
+.section-trending-heroes {
+  grid-column: span 1; /* Each section spans full width */
+}
+
+.section-discover-comics,
+.section-comics {
+  grid-column: span 2; /* Each section spans full width */
+}
+
+.character-grid, .character-grid-trend {
+  grid-template-columns: 1fr;
+}
+
 .footer-linkedin a img {
     margin-bottom: 10px;
 }
 .footer-text p{
   margin-left: 0px;
   text-align: center;
+}
+
+.comic-grid {
+  grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+}
+
+.comic-card {
+cursor: pointer;
+transition: transform 0.3s ease;
+}
+
+.comic-card:hover {
+transform: scale(1.05);
+}
+
+.comic-card img {
+width: 100%;
+height: auto;
+border-radius: 8px;
+}
+
+.slider-cont{
+  margin: 10px auto 0px auto;
 }
 }
 

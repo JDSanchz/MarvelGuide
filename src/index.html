@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <script src="./js/main.js" type="module"></script>
-    <title>Marvel Explorer</title>
+    <title>Marvelous</title>
     <!-- Add your CSS file link here -->
 </head>
 <body>
@@ -14,24 +15,29 @@
         <!-- Header content -->
     </header>
     <main>
-        <section>
-            <h2>Latest Comics</h2>
-            <p>Discover the newest adventures in the Marvel Universe.</p>
-            <!-- Content for the latest comics section -->
+        <div class="main-wrapper">
+
+            <section class="section-trending-heroes">
+                <h2>Trending Characters</h2>
+                <div class="character-grid-trend">
+                    <!-- Trending characters will be populated here -->
+                </div>
+            </section>
+        <section class="section-characters">
+            <h2>Discover Characters</h2>
+            <div class="character-grid">
+                <!-- Dynamic content: Character cards go here -->
+            </div>
+        </section>
+        
+        <section class="section-comics">
+            <h2>Our Comic Choices</h2>
+            <div class="comic-grid">
+                <!-- Dynamic content: Comic cards go here -->
+            </div>
         </section>
 
-        <section>
-            <h2>Random Heroes</h2>
-            <p>Explore randomly selected Marvel heroes and their stories.</p>
-            <!-- Content for the random heroes section -->
-        </section>
-
-        <!-- Add the new section for "Random" here -->
-        <section>
-            <h2>Feature Storylines</h2>
-            <p>Find our reccomendations here</p>
-            <!-- Content for the random section -->
-        </section>
+    </div>       
     </main>
 
     <footer id="main-footer">
