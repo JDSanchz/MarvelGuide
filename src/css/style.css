@@ -44,6 +44,9 @@
       color: var(--light-gray);
       background-color: #505050;
     }
+    .dark-mode .comic-item a{
+      color: var(--light-gray);
+    }
     body {
       font-family: 'Arial', sans-serif;
       background-color: var(--body-bg);
